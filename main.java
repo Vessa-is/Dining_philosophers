@@ -14,17 +14,18 @@ class Main {
                     int left = i;
                     int right = (i + 1) % N;
 
-
+                    // Pick up left fork first (no ordering)
                     fork[left].acquire();
                     System.out.println(i + ": picked up left fork " + left);
 
-
+                    // Pick up right fork second (no ordering)
                     fork[right].acquire();
                     System.out.println(i + ": picked up right fork " + right);
 
                     System.out.println(i + ": eating");
                     Thread.sleep(100);
-                    
+
+                    // Put down forks
                     fork[right].release();
                     fork[left].release();
                 }
